@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>リファラル採用（リファラル採用）| 株式会社トップエンジニアリング</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #1457a8;
+    --green-light: #e6eef8;
+    --green-mid: #2e7dd6;
+    --amber: #e8a020;
+    --amber-light: #fef3dc;
+    --text: #1a1a1a;
+    --muted: #666;
+    --border: #e0e0e0;
+    --bg: #f6f8fc;
+    --white: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(246,248,252,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo { font-size: 15px; font-weight: 700; color: var(--green); letter-spacing: 0.03em; }
+  .nav-hp {
+    background: transparent; color: var(--green);
+    font-size: 13px; font-weight: 500;
+    padding: 8px 16px; border-radius: 99px;
+    text-decoration: none; border: 1.5px solid var(--green);
+    transition: background 0.2s;
+  }
+  .nav-hp:hover { background: var(--green-light); }
+  .nav-cta {
+    background: var(--green); color: #fff;
+    font-size: 13px; font-weight: 500;
+    padding: 8px 20px; border-radius: 99px;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: #0e3f80; }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 6rem 2rem 5rem;
+    text-align: center;
+    background: var(--white);
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, #d0e2f7 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--green-light); color: var(--green);
+    font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+    padding: 6px 16px; border-radius: 99px;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+  }
+  .hero-badge span { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--green-mid); }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--text);
+    max-width: 680px; margin: 0 auto 1.25rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--green); }
+  .hero-sub {
+    font-size: 16px; color: var(--muted);
+    max-width: 520px; margin: 0 auto 2.5rem;
+    line-height: 1.8;
+  }
+  .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-main {
+    background: var(--green); color: #fff;
+    font-size: 16px; font-weight: 700;
+    padding: 16px 40px; border-radius: 99px;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: transform 0.15s, background 0.2s;
+    display: inline-block;
+  }
+  .btn-main:hover { background: #0e3f80; transform: translateY(-2px); }
+  .btn-sub {
+    background: transparent; color: var(--green);
+    font-size: 15px; font-weight: 500;
+    padding: 16px 32px; border-radius: 99px;
+    border: 1.5px solid var(--green);
+    text-decoration: none; cursor: pointer;
+    transition: background 0.2s;
+    display: inline-block;
+  }
+  .btn-sub:hover { background: var(--green-light); }
+
+  /* BONUS HIGHLIGHT */
+  .bonus-section {
+    background: var(--green-light);
+    padding: 4rem 2rem;
+  }
+  .bonus-inner { max-width: 860px; margin: 0 auto; }
+  .bonus-label {
+    font-size: 13px; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--green);
+    margin-bottom: 0.75rem;
+  }
+  .bonus-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 400; margin-bottom: 2.5rem;
+    line-height: 1.4; color: var(--text);
+  }
+  .bonus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .bonus-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 20px;
+    padding: 1.75rem 1.5rem;
+    text-align: center;
+  }
+  .bonus-card-trigger {
+    display: inline-block;
+    font-size: 15px; font-weight: 700; letter-spacing: 0.02em;
+    background: var(--green-light); color: var(--green);
+    border-radius: 99px; padding: 4px 12px;
+    margin-bottom: 1rem;
+  }
+  .bonus-card-title { font-size: 14px; color: var(--muted); margin-bottom: 1.25rem; }
+  .bonus-row { display: flex; flex-direction: column; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); gap: 2px; }
+  .bonus-row:last-child { border-bottom: none; }
+  .bonus-row-label { font-size: 17px; color: var(--muted); font-weight: 500; }
+  .bonus-amount-wrap { display: flex; align-items: baseline; gap: 2px; }
+  .bonus-row-amount { font-size: 48px; font-weight: 700; color: var(--green); line-height: 1.1; }
+  .bonus-row-unit { font-size: 18px; color: var(--green); font-weight: 700; }
+  .bonus-note { margin-top: 1.5rem; font-size: 12px; color: var(--muted); }
+
+  /* WHY */
+  .why-section { padding: 5rem 2rem; background: var(--bg); }
+  .section-inner { max-width: 860px; margin: 0 auto; }
+  .section-eyebrow {
+    font-size: 13px; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--green);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 400; margin-bottom: 3rem;
+    line-height: 1.4;
+  }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+  .why-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.75rem 1.5rem;
+  }
+  .why-icon {
+    width: 52px; height: 52px; border-radius: 14px;
+    background: var(--green-light); color: var(--green);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .why-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 0.5rem; }
+  .why-card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+  /* STEPS */
+  .steps-section { padding: 5rem 2rem; background: var(--white); }
+  .steps-list { display: flex; flex-direction: column; gap: 0; }
+  .step-item {
+    display: grid; grid-template-columns: 56px 1fr;
+    gap: 1.5rem; align-items: flex-start;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--border);
+    opacity: 0; transform: translateY(16px);
+    transition: opacity 0.5s, transform 0.5s;
+  }
+  .step-item.visible { opacity: 1; transform: translateY(0); }
+  .step-item:last-child { border-bottom: none; }
+  .step-num-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .step-num {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--green); color: #fff;
+    font-size: 16px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-line { width: 1px; flex: 1; min-height: 20px; background: var(--border); }
+  .step-item:last-child .step-line { display: none; }
+  .step-body { padding-top: 8px; }
+  .step-body h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  .step-body p { font-size: 14px; color: var(--muted); }
+
+  /* JOBS */
+  .jobs-section { padding: 5rem 2rem; background: var(--bg); }
+  .jobs-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+  @media (max-width: 700px) { .jobs-grid { grid-template-columns: repeat(2, 1fr); } }
+  .job-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 1.75rem 1rem 1.5rem;
+    display: flex; flex-direction: column; align-items: flex-start;
+    gap: 0; text-align: left;
+    position: relative; overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .job-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: var(--border);
+  }
+  .job-icon-wrap {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: var(--green-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 1rem;
+  }
+  .job-name { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 6px; line-height: 1.4; }
+  .job-dept {
+    display: inline-flex; align-items: center;
+    font-size: 11px; font-weight: 600; color: var(--muted);
+    background: var(--bg); border-radius: 99px;
+    padding: 3px 10px; margin-top: auto;
+  }
+  .jobs-notes { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 8px; }
+  .jobs-note-item { font-size: 13px; color: var(--muted); background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 10px 16px; line-height: 1.6; }
+  .jobs-note-warn { color: #7a5000; background: #fffbf0; border-color: #f0d080; }
+
+  /* RECRUIT */
+  .recruit-section { padding: 5rem 2rem; background: var(--bg); }
+  .recruit-table { display: flex; flex-direction: column; gap: 0; }
+  .recruit-row {
+    display: grid; grid-template-columns: 120px 1fr;
+    gap: 1.5rem; padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .recruit-row:last-child { border-bottom: none; }
+  .recruit-label {
+    font-size: 13px; font-weight: 700; color: var(--text);
+    padding-top: 2px; flex-shrink: 0;
+  }
+  .recruit-value { font-size: 14px; color: var(--muted); line-height: 1.8; }
+  .recruit-note { font-size: 12px; color: var(--muted); }
+  @media (max-width: 600px) {
+    .recruit-row { grid-template-columns: 1fr; gap: 4px; }
+  }
+
+  /* FAQ */
+  .faq-section { padding: 5rem 2rem; background: var(--white); }
+  .faq-list { display: flex; flex-direction: column; gap: 0; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q {
+    width: 100%; text-align: left; background: none; border: none;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 15px; font-weight: 700; color: var(--text);
+    padding: 1.25rem 0;
+    display: flex; justify-content: space-between; align-items: center;
+    cursor: pointer; gap: 1rem;
+  }
+  .faq-q::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--green); flex-shrink: 0; transition: transform 0.25s; }
+  .faq-item.open .faq-q::after { transform: rotate(45deg); }
+  .faq-a { font-size: 14px; color: var(--muted); line-height: 1.8; padding: 0 0 1.25rem; display: none; }
+  .faq-item.open .faq-a { display: block; }
+
+  /* CTA */
+  .cta-section {
+    padding: 6rem 2rem;
+    background: var(--green);
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 80% at 50% 100%, rgba(255,255,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 400; color: #fff;
+    margin-bottom: 1rem; line-height: 1.4;
+  }
+  .cta-section p { font-size: 16px; color: rgba(255,255,255,0.75); margin-bottom: 2.5rem; }
+  .btn-white {
+    background: #fff; color: var(--green);
+    font-size: 17px; font-weight: 700;
+    padding: 18px 52px; border-radius: 99px;
+    text-decoration: none; border: none; cursor: pointer;
+    display: inline-block;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
+
+  footer {
+    background: var(--text); color: rgba(255,255,255,0.4);
+    text-align: center; font-size: 12px;
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 600px) {
+    .hero { padding: 4rem 1.25rem 3rem; }
+    .bonus-section, .why-section, .steps-section, .jobs-section, .faq-section, .cta-section { padding: 3.5rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">株式会社トップエンジニアリング ｜ リファラル採用</div>
+  <div style="display:flex;gap:8px;align-items:center;">
+    <a href="https://www.topeng.co.jp/" target="_blank" rel="noopener" class="nav-hp">会社HP</a>
+    <a href="#apply" class="nav-cta">応募フォームへ</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge"><span></span>Referral Recruiting</div>
+  <h1>あなたの<br><em>「この人と働きたい」</em>を、<br>形にしよう</h1>
+  <p class="hero-sub">・いますぐ転職するつもりはないけれど、今後のために情報収集したい<br>・選考の前に、会社の雰囲気や仕事内容を知りたい<br>など、カジュアル面談へのご参加のみも可能です。<br>まずは気軽にご連絡ください。</p>
+  <div class="hero-actions">
+    <a href="#apply" class="btn-main">友人・知人を紹介する</a>
+    <a href="#steps" class="btn-sub">流れを見る</a>
+    <a href="https://www.topeng.co.jp/" target="_blank" rel="noopener" class="btn-sub">会社HPを見る ↗</a>
+  </div>
+</section>
+
+<!-- BONUS -->
+<section class="bonus-section">
+  <div class="bonus-inner">
+    <div class="bonus-label">Referral Bonus</div>
+    <h2 class="bonus-title">紹介してくれた方にも、<br>入社した方にも、お礼を</h2>
+    <div class="bonus-grid">
+      <div class="bonus-card">
+        <div class="bonus-card-trigger">面接実施時</div>
+        <div class="bonus-row">
+          <span class="bonus-row-label">紹介者へ</span>
+          <div class="bonus-amount-wrap"><span class="bonus-row-amount">1</span><span class="bonus-row-unit">万円</span></div>
+        </div>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-card-trigger">採用（経験者）</div>
+        <div class="bonus-row">
+          <span class="bonus-row-label">紹介者へ</span>
+          <div class="bonus-amount-wrap"><span class="bonus-row-amount">40</span><span class="bonus-row-unit">万円</span></div>
+        </div>
+        <div class="bonus-row">
+          <span class="bonus-row-label">入社者へ</span>
+          <div class="bonus-amount-wrap"><span class="bonus-row-amount">20</span><span class="bonus-row-unit">万円</span></div>
+        </div>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-card-trigger">採用（未経験者）</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:-8px;margin-bottom:8px;">※インフラエンジニアのみ</div>
+        <div class="bonus-row">
+          <span class="bonus-row-label">紹介者へ</span>
+          <div class="bonus-amount-wrap"><span class="bonus-row-amount">20</span><span class="bonus-row-unit">万円</span></div>
+        </div>
+        <div class="bonus-row">
+          <span class="bonus-row-label">入社者へ</span>
+          <div class="bonus-amount-wrap"><span class="bonus-row-amount">15</span><span class="bonus-row-unit">万円</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="bonus-note">※ボーナスは入社後3ヶ月以上勤務を確認後にお支払いします。詳細は人事担当までお問い合わせください。</p>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why-section">
+  <div class="section-inner">
+    <div class="section-eyebrow">Why Top Engineering</div>
+    <h2 class="section-title">トップエンジニアリングが<br>選ばれる理由</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon"><svg width="40" height="40" viewBox="0 0 44 44" fill="none">
+  <path d="M9 8.5 L9 10.2 A5.5 5.5 0 0 0 7 11.5 L5.5 10.6 L3.6 12.5 L4.5 14 A5.5 5.5 0 0 0 3.5 16.5 L1.8 16.5 L1.8 19 L3.5 19 A5.5 5.5 0 0 0 4.5 21.5 L3.6 23 L5.5 24.9 L7 24 A5.5 5.5 0 0 0 9 25.3 L9 27 L11.5 27 L11.5 25.3 A5.5 5.5 0 0 0 13.5 24 L15 24.9 L16.9 23 L16 21.5 A5.5 5.5 0 0 0 17 19 L18.7 19 L18.7 16.5 L17 16.5 A5.5 5.5 0 0 0 16 14 L16.9 12.5 L15 10.6 L13.5 11.5 A5.5 5.5 0 0 0 11.5 10.2 L11.5 8.5 Z" stroke="#1457a8" stroke-width="1.4" stroke-linejoin="round" fill="none"/>
+  <circle cx="10.25" cy="17.75" r="3" stroke="#1457a8" stroke-width="1.3" fill="none"/>
+  <circle cx="10.25" cy="17.75" r="1.1" fill="#2e7dd6"/>
+  <path d="M32 5 L27 17 L31 17 L26 30 L37 14 L32.5 14 L37 5 Z" stroke="#1457a8" stroke-width="1.4" stroke-linejoin="round" fill="none"/>
+  <path d="M7 38.5 L8.5 35.5 L12 34 L14 32 L28 32 L30 34 L33.5 35.5 L35 38.5 Z" stroke="#1457a8" stroke-width="1.4" stroke-linejoin="round" fill="none"/>
+  <path d="M14 32 L15.5 35.5 L27.5 35.5 L29.5 32" stroke="#1457a8" stroke-width="1.1" stroke-linejoin="round" fill="none"/>
+  <circle cx="13" cy="40" r="3" stroke="#1457a8" stroke-width="1.3" fill="none"/>
+  <circle cx="13" cy="40" r="1.2" fill="#2e7dd6"/>
+  <circle cx="29" cy="40" r="3" stroke="#1457a8" stroke-width="1.3" fill="none"/>
+  <circle cx="29" cy="40" r="1.2" fill="#2e7dd6"/>
+</svg></div>
+        <h3>幅広い技術領域に携われる</h3>
+        <p>機械設計・電気電子設計・ソフトウェア開発・ITインフラ・生産技術など、多彩な分野の大手クライアント案件に参画できます。SONY・日産・パナソニック・トヨタなど名だたる企業が取引先です。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg width="40" height="40" viewBox="0 0 80 80" fill="none">
+  <circle cx="52" cy="9" r="6.5" stroke="#1457a8" stroke-width="2.8" fill="none"/>
+  <line x1="52" y1="15.5" x2="46" y2="33" stroke="#1457a8" stroke-width="2.8" stroke-linecap="round"/>
+  <line x1="50" y1="20" x2="62" y2="26" stroke="#1457a8" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="50" y1="20" x2="40" y2="28" stroke="#1457a8" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="46" y1="33" x2="38" y2="46" stroke="#1457a8" stroke-width="2.8" stroke-linecap="round"/>
+  <line x1="38" y1="46" x2="30" y2="46" stroke="#1457a8" stroke-width="2.8" stroke-linecap="round"/>
+  <line x1="46" y1="33" x2="54" y2="28" stroke="#1457a8" stroke-width="2.8" stroke-linecap="round"/>
+  <line x1="54" y1="28" x2="64" y2="36" stroke="#1457a8" stroke-width="2.8" stroke-linecap="round"/>
+  <polyline points="68,36 68,46 54,46 54,56 40,56 40,66 14,66" stroke="#1457a8" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg></div>
+        <h3>生涯エンジニアとして成長できる</h3>
+        <p>社内教育を重視し、エンジニアが生涯にわたって輝ける「機会と場」を提供。独自のキャリアパスで、スキルアップを着実にサポートします。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+  <rect x="5" y="6" width="30" height="24" rx="2" stroke="#1457a8" stroke-width="1.4" fill="none"/>
+  <line x1="5" y1="20" x2="35" y2="20" stroke="#1457a8" stroke-width="0.8" stroke-dasharray="2 2"/>
+  <line x1="5" y1="13" x2="35" y2="13" stroke="#1457a8" stroke-width="0.8" stroke-dasharray="2 2"/>
+  <polyline points="8,26 13,22 18,24 23,16 28,18 33,10" stroke="#1457a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="33" cy="10" r="2.2" fill="#2e7dd6"/>
+  <line x1="5" y1="33" x2="35" y2="33" stroke="#1457a8" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="5" y1="30" x2="5" y2="36" stroke="#1457a8" stroke-width="1.4" stroke-linecap="round"/>
+  <line x1="35" y1="30" x2="35" y2="36" stroke="#1457a8" stroke-width="1.4" stroke-linecap="round"/>
+</svg></div>
+        <h3>東証上場グループの安定基盤</h3>
+        <p>東証スタンダード上場・株式会社平山ホールディングスグループの一員として、安定した経営基盤のもとで腰を据えてキャリアを築けます。福岡営業所開設など成長も続けています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="steps-section" id="steps">
+  <div class="section-inner">
+    <div class="section-eyebrow">How it works</div>
+    <h2 class="section-title">紹介の流れ</h2>
+    <div class="steps-list">
+      <div class="step-item">
+        <div class="step-num-wrap"><div class="step-num">1</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <h3>紹介</h3>
+          <p>「こんな会社あるけど、話聞いてみる？」くらいの気軽さでOK。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num-wrap"><div class="step-num">2</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <h3>応募フォームからエントリー</h3>
+          <p>ご本人または紹介者が情報を入力して送信してください。5分程度で完了します。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num-wrap"><div class="step-num">3</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <h3>人事担当から連絡</h3>
+          <p>通常3営業日以内にご連絡します。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num-wrap"><div class="step-num">4</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <h3>カジュアル面談</h3>
+          <p>当社の事業内容や社風、働き方についてお話いたします。<br>ご質問やご不明点などございましたら、お気軽にご相談ください。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num-wrap"><div class="step-num">5</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <h3>選考（1〜2回）</h3>
+          <p>書類・面接など、ポジションに応じた選考を行います。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num-wrap"><div class="step-num">6</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <h3>採用・入社 🎉</h3>
+          <p>入社後3ヶ月以上勤務を確認した時点でリファラルボーナスをお渡しします。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOBS -->
+<section class="jobs-section">
+  <div class="section-inner">
+    <div class="section-eyebrow">Open Positions</div>
+    <h2 class="section-title">募集中のポジション</h2>
+    <div class="jobs-grid">
+      <div class="job-card">
+        <div class="job-icon-wrap"><svg width="22" height="22" viewBox="0 0 36 36" fill="none">
+  <path d="M15 3.5 L15 5.8 A8 8 0 0 0 11.2 7.9 L9.2 6.7 L6.7 9.2 L7.9 11.2 A8 8 0 0 0 5.8 15 L3.5 15 L3.5 21 L5.8 21 A8 8 0 0 0 7.9 24.8 L6.7 26.8 L9.2 29.3 L11.2 28.1 A8 8 0 0 0 15 30.2 L15 32.5 L21 32.5 L21 30.2 A8 8 0 0 0 24.8 28.1 L26.8 29.3 L29.3 26.8 L28.1 24.8 A8 8 0 0 0 30.2 21 L32.5 21 L32.5 15 L30.2 15 A8 8 0 0 0 28.1 11.2 L29.3 9.2 L26.8 6.7 L24.8 7.9 A8 8 0 0 0 21 5.8 L21 3.5 Z" stroke="#1457a8" stroke-width="1.4" stroke-linejoin="round" fill="none"/>
+  <circle cx="18" cy="18" r="5" stroke="#1457a8" stroke-width="1.4" fill="none"/>
+  <circle cx="18" cy="18" r="1.5" fill="#2e7dd6"/>
+</svg></div>
+        <div class="job-name">機械設計</div>
+        <div class="job-dept">経験者</div>
+      </div>
+      <div class="job-card">
+        <div class="job-icon-wrap"><svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+  <path d="M13 3L7 12H11L9 19L17 9H13L13 3Z" stroke="#1457a8" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+</svg></div>
+        <div class="job-name">電気・電子設計</div>
+        <div class="job-dept">経験者</div>
+      </div>
+      <div class="job-card">
+        <div class="job-icon-wrap"><svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+  <rect x="3" y="4" width="16" height="11" rx="2" stroke="#1457a8" stroke-width="1.5" fill="none"/>
+  <path d="M7 8L5.5 9.5L7 11" stroke="#1457a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M10 11L11.5 9.5L10 8" stroke="#1457a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <line x1="8.5" y1="11.5" x2="9.5" y2="7.5" stroke="#2e7dd6" stroke-width="1.3" stroke-linecap="round"/>
+  <line x1="8" y1="15" x2="14" y2="15" stroke="#1457a8" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="11" y1="15" x2="11" y2="18" stroke="#1457a8" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="8" y1="18" x2="14" y2="18" stroke="#1457a8" stroke-width="1.5" stroke-linecap="round"/>
+</svg></div>
+        <div class="job-name">ソフトウェア開発</div>
+        <div class="job-dept">経験者</div>
+      </div>
+      <div class="job-card">
+        <div class="job-icon-wrap"><svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+  <rect x="3" y="4" width="16" height="4" rx="1.5" stroke="#1457a8" stroke-width="1.4" fill="none"/>
+  <rect x="3" y="10" width="16" height="4" rx="1.5" stroke="#1457a8" stroke-width="1.4" fill="none"/>
+  <circle cx="17" cy="6" r="1" fill="#2e7dd6"/>
+  <circle cx="17" cy="12" r="1" fill="#2e7dd6"/>
+  <path d="M11 16 C7 16 5 19 5 19" stroke="#1457a8" stroke-width="1.3" stroke-linecap="round" fill="none" stroke-dasharray="2 1.5"/>
+  <path d="M11 16 C15 16 17 19 17 19" stroke="#1457a8" stroke-width="1.3" stroke-linecap="round" fill="none" stroke-dasharray="2 1.5"/>
+  <circle cx="5" cy="19.5" r="1.2" fill="#2e7dd6"/>
+  <circle cx="11" cy="19.5" r="1.2" fill="#2e7dd6"/>
+  <circle cx="17" cy="19.5" r="1.2" fill="#2e7dd6"/>
+  <line x1="11" y1="14" x2="11" y2="16" stroke="#1457a8" stroke-width="1.3" stroke-linecap="round"/>
+</svg></div>
+        <div class="job-name">インフラエンジニア</div>
+        <div class="job-dept">経験者・未経験者</div>
+      </div>
+      <div class="job-card">
+        <div class="job-icon-wrap"><svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+  <path d="M3 19V10L8 13V10L13 13V7H19V19H3Z" stroke="#1457a8" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+  <rect x="14" y="14" width="3" height="5" rx="0.5" stroke="#1457a8" stroke-width="1.2" fill="none"/>
+  <rect x="6" y="15" width="2.5" height="4" rx="0.5" fill="#2e7dd6"/>
+  <line x1="13" y1="7" x2="13" y2="4" stroke="#1457a8" stroke-width="1.3" stroke-linecap="round"/>
+  <line x1="16" y1="7" x2="16" y2="4" stroke="#1457a8" stroke-width="1.3" stroke-linecap="round"/>
+</svg></div>
+        <div class="job-name">生産技術</div>
+        <div class="job-dept">経験者</div>
+      </div>
+    </div>
+    <div class="jobs-notes">
+      <div class="jobs-note-item"><span style="display:inline-flex;align-items:flex-start;gap:8px;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:1px">
+  <circle cx="7" cy="7" r="6" stroke="#1457a8" stroke-width="1.3" fill="none"/>
+  <line x1="7" y1="6" x2="7" y2="10" stroke="#1457a8" stroke-width="1.4" stroke-linecap="round"/>
+  <circle cx="7" cy="4" r="0.8" fill="#1457a8"/>
+</svg><span>他国籍の方や上記以外の経験をお持ちの方も、まずはお気軽にご相談ください。</span></span></div>
+      <div class="jobs-note-item"><span style="display:inline-flex;align-items:flex-start;gap:8px;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:1px">
+  <circle cx="7" cy="7" r="6" stroke="#1457a8" stroke-width="1.3" fill="none"/>
+  <ellipse cx="7" cy="7" rx="2.5" ry="6" stroke="#1457a8" stroke-width="1.1" fill="none"/>
+  <line x1="1" y1="7" x2="13" y2="7" stroke="#1457a8" stroke-width="1.1"/>
+  <path d="M2 4.5 Q7 3.5 12 4.5" stroke="#1457a8" stroke-width="1" fill="none"/>
+  <path d="M2 9.5 Q7 10.5 12 9.5" stroke="#1457a8" stroke-width="1" fill="none"/>
+</svg><span>被紹介者は日本国内在住の方が対象です。海外在住の方は対象外となります。</span></span></div>
+      <div class="jobs-note-item jobs-note-warn"><span style="display:inline-flex;align-items:flex-start;gap:8px;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:1px">
+  <path d="M7 1.5L13 12.5H1L7 1.5Z" stroke="#b07800" stroke-width="1.3" stroke-linejoin="round" fill="none"/>
+  <line x1="7" y1="6" x2="7" y2="9" stroke="#b07800" stroke-width="1.4" stroke-linecap="round"/>
+  <circle cx="7" cy="11" r="0.8" fill="#b07800"/>
+</svg><span>間接職からのご紹介は謝礼金の対象外です。</span></span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- RECRUIT -->
+<section class="recruit-section">
+  <div class="section-inner">
+    <div class="section-eyebrow">Job Details</div>
+    <h2 class="section-title">募集要項</h2>
+    <div class="recruit-table">
+      <div class="recruit-row">
+        <div class="recruit-label">募集職種</div>
+        <div class="recruit-value">
+          機械・電気・電子設計技術者／SE・プログラマー／マイコン応用技術者／CADオペレーター／生産技術者
+        </div>
+      </div>
+      <div class="recruit-row">
+        <div class="recruit-label">仕事内容</div>
+        <div class="recruit-value">
+          機械、電気・電子、プラント、ソフト各分野の技術者を擁し、取引先メーカー各社の新製品開発の設計支援を行います。各人の得意分野で力を発揮するとともに、隣接分野との接点も多く、その技術の習得も可能です。
+        </div>
+      </div>
+      <div class="recruit-row">
+        <div class="recruit-label">応募対象</div>
+        <div class="recruit-value">
+          機械設計、電気・電子設計、ソフトウェア開発、インフラエンジニア、生産技術等の経験者。<br>
+          <span class="recruit-note">※インフラエンジニアのみ未経験可</span>
+        </div>
+      </div>
+      <div class="recruit-row">
+        <div class="recruit-label">勤務地</div>
+        <div class="recruit-value">
+          東北地区、関東地区、中部地区、関西地区、中国・九州地区<br>
+          <span class="recruit-note">※希望を考慮します</span><br>
+          <span class="recruit-note">※インフラエンジニアは首都圏限定</span>
+        </div>
+      </div>
+      <div class="recruit-row">
+        <div class="recruit-label">勤務時間</div>
+        <div class="recruit-value">
+          9:00〜18:00（休憩 12:00〜13:00）<br>
+          <span class="recruit-note">※派遣就業先の規定により異なるケースがございます</span>
+        </div>
+      </div>
+      <div class="recruit-row">
+        <div class="recruit-label">給与</div>
+        <div class="recruit-value">経験・能力・資格により優遇します</div>
+      </div>
+      <div class="recruit-row">
+        <div class="recruit-label">待遇</div>
+        <div class="recruit-value">
+          昇給年1回、賞与年2回、交通費全額支給、各種社会保険完備、諸手当、団体保険、社員旅行等各種イベント、個人旅行補助金制度、各種保養施設、住宅斡旋、社宅借り上げ制度
+        </div>
+      </div>
+      <div class="recruit-row">
+        <div class="recruit-label">休日休暇</div>
+        <div class="recruit-value">
+          年間休日124日（完全週休2日制（土・日）、祝日、ゴールデンウィーク、夏季、年末年始）慶弔、年次有給<br>
+          <span class="recruit-note">※就業先によって多少異なるケースがございます</span>
+        </div>
+      </div>
+      <div class="recruit-row">
+        <div class="recruit-label">備考</div>
+        <div class="recruit-value">
+          在職中の方へ：入社日等、相談に応じます。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="section-inner">
+    <div class="section-eyebrow">FAQ</div>
+    <h2 class="section-title">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">紹介した人が不採用になっても大丈夫？</button>
+        <div class="faq-a">採用・不採用にかかわらず、紹介者の方への評価には影響しません。お気軽にご紹介いただけると嬉しいです。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">今すぐ転職したい人じゃないといけない？</button>
+        <div class="faq-a">いいえ。「話だけ聞いてみたい」「なんとなく気になっている」という方も大歓迎です。カジュアル面談からスタートできます。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">紹介できる人数に上限はある？</button>
+        <div class="faq-a">上限はありません。何人でもご紹介いただけます。ボーナスも紹介した人数分お支払いします。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">未経験・経験者の判断基準は？</button>
+        <div class="faq-a">採用ポジションに関連する実務経験の有無をもとに、選考時に面接官が判断します。不明な点はお気軽にお問い合わせください。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">リファラルボーナスはいつ支払われる？</button>
+        <div class="faq-a">面接ボーナスは選考面接が実施された翌月末にお支払いします。採用ボーナスはご入社後3ヶ月以上の勤務を確認した時点でお支払いします。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="apply">
+  <h2>あなたの一言が、<br>誰かの転機になる</h2>
+  <p>「話だけ聞いてみて」のひと言から、はじめましょう</p>
+  <!-- Google フォームのURLが決まったら href を差し替えてください -->
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdBhADutz2W1pwXp0TLs9Hg1pXjZzPqGIcWie2oMmvnelD1iQ/viewform?usp=header" target="_blank" rel="noopener" class="btn-white">応募フォームへ進む →</a>
+</section>
+
+<footer>
+  &copy; 2026 株式会社トップエンジニアリング. All rights reserved.
+</footer>
+
+<script>
+  // FAQ アコーディオン
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Steps スクロールアニメーション
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 120);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.step-item').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
